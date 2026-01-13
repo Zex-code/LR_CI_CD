@@ -1,9 +1,14 @@
-name: Ruff Check
+name: CI/CD 
 on: push
 
 jobs:
-  lint:
+  test:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - uses: astral-sh/ruff-action@v3
+      
+      - name: Run Ruff
+        uses: astral-sh/ruff-action@v3
+      
+      - name: Run Tests
+        run: python -m pytest src/ -v
